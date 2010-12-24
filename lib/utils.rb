@@ -13,6 +13,10 @@ module EcoApps
       def env_value(value)
         value.kind_of?(Hash) ? (value[Rails.env] || value) : value
       end
+
+      def escape(url)
+        URI.escape(url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
+      end
     end
   end
 end

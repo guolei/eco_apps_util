@@ -27,6 +27,6 @@ module URIQueryUtil
     
 end
 
-[URI::HTTP, URI::HTTPS, URI::FTP].each do |klass|
+[URI::HTTP, URI::HTTPS, URI::FTP, URI::Generic].each do |klass|
   klass.send(:include, URIQueryUtil)
 end
