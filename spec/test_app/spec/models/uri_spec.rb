@@ -6,6 +6,7 @@ describe "Extensions" do
       it "should add query to url" do
         URI.parse("http://article.com").add_query({:q => 5}).to_s.should == "http://article.com?q=5"
         URI.parse("https://article.com?p=1").add_query({:q => 5, :t=>"hello"}).to_s.should == "https://article.com?p=1&q=5&t=hello"
+        URI.parse("/articles").add_query({:q => 5}).to_s.should == "/articles?q=5"
       end
 
       it "should not add query if value is null" do
@@ -15,7 +16,7 @@ describe "Extensions" do
 
       it "should replace existing one" do
         URI.parse("http://article.com?p=5").add_query({:p=>6, :t => 3}).to_s.should == "http://article.com?p=6&t=3"
-      end
+      end      
     end
 
     describe "add_path" do
